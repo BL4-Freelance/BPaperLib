@@ -1,0 +1,7 @@
+name: BLib
+version: '1.0'
+main: fr.bl4.blib.BLib
+api-version: '1.21'
+depend:
+  - NBTAPI
+  - LuckPerms

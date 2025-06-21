@@ -1,0 +1,31 @@
+# Build output
+/build/
+/out/
+
+# IntelliJ IDEA
+/.idea/
+/*.iml
+
+# Gradle
+/.gradle/
+/gradle/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Java
+*.class
+
+# Server-specific files (optional if you have a server folder)
+server/logs/
+server/crash-reports/
+server/world/
+server/plugins/*.jar  # if you auto-build plugins here
+
+# Misc
+*.tmp
+*.bak
