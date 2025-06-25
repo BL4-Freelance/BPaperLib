@@ -27,7 +27,6 @@ dependencies {
 	compileOnly("de.tr7zw:item-nbt-api-plugin:2.15.0")
 	compileOnly("dev.lone:api-itemsadder:4.0.10")
 	compileOnly("net.luckperms:api:5.5")
-	compileOnly(files("src/main/resources/SCore-5.25.3.24.jar"))
 }
 
 val targetJavaVersion = 21

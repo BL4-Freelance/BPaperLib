@@ -1,6 +1,5 @@
 package fr.bl4.blib.config
 
-import com.ssomar.score.api.executableitems.ExecutableItemsAPI
 import dev.lone.itemsadder.api.CustomStack
 import fr.bl4.blib.BLib
 import fr.bl4.blib.item.ItemBuilder
@@ -13,7 +12,6 @@ import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
-import java.util.*
 
 /**
  * @return The itemstack created/modified by the ConfigurationSection instance.
@@ -28,17 +26,16 @@ fun ConfigurationSection.getItemStack2(path: String, def: ItemStack): ItemStack 
 	}
 
 	val isItemsAdderAvailable = Bukkit.getPluginManager().isPluginEnabled("ItemsAdder")
-	val customStack = if (isItemsAdderAvailable)
-		CustomStack.getInstance(textureKey) else null
-
-	val isExecutableItemsAvailable = Bukkit.getPluginManager().isPluginEnabled("ExecutableItems")
-	val executableItem = if (isExecutableItemsAvailable)
-		ExecutableItemsAPI.getExecutableItemsManager().getExecutableItem(textureKey).orElse(null) else null
+	var customStack: CustomStack? = null
+	if (isItemsAdderAvailable) {
+		customStack = if (CustomStack.isInRegistry(textureKey))
+			CustomStack.getInstance(textureKey)
+		else
+			null
+	}
 
 	val itemBuilder = if (customStack != null) {
 		ItemBuilder(customStack.itemStack)
-	} else if (executableItem != null) {
-		ItemBuilder(executableItem.buildItem(1, Optional.empty()))
 	} else {
 		try {
 			val texture = Material.valueOf(textureKey.uppercase())
