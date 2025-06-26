@@ -6,6 +6,7 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.TimeZone
 
+@Suppress("unused")
 fun Long.toReadable(): String {
 	if (this <= 0) return "Never"
 
@@ -22,15 +23,15 @@ fun getCurrentTime(zone: ZoneId = ZoneId.systemDefault()): Long = ZonedDateTime.
 
 fun Long.toStringTime(): String {
 	val hours = this / 3600
-	val minutes = this / 60
+	val minutes = (this % 3600) / 60
 	val seconds = this % 60
 
 	var str = ""
 	if (hours > 0) str += "${hours}h"
 	if (hours > 0 && (minutes > 0 || seconds > 0)) str += " "
 	if (minutes > 0) str += "${minutes}m"
-	if (seconds > 0 && (hours > 0 || minutes > 0)) str += " "
-	if (seconds > 0) str += "${seconds}s"
+	if (minutes > 0 && seconds > 0) str += " "
+	if (seconds > 0 || (hours == 0L && minutes == 0L)) str += "${seconds}s"
 
 	return str
 }
