@@ -1,4 +1,4 @@
-package fr.bl4.blib.item
+package fr.bl4.bpaperlib.item
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer

@@ -1,8 +1,8 @@
-package fr.bl4.blib.config
+package fr.bl4.bpaperlib.config
 
 import dev.lone.itemsadder.api.CustomStack
-import fr.bl4.blib.BLib
-import fr.bl4.blib.item.ItemBuilder
+import fr.bl4.bpaperlib.BPaperLib
+import fr.bl4.bpaperlib.item.ItemBuilder
 import io.papermc.paper.registry.RegistryAccess
 import io.papermc.paper.registry.RegistryKey
 import org.bukkit.Bukkit
@@ -21,7 +21,7 @@ fun ConfigurationSection.getItemStack2(path: String, def: ItemStack): ItemStack 
 	val itemPath = this.getConfigurationSection(path) ?: return def
 
 	val textureKey = itemPath.getString("texture") ?: run {
-		BLib.instance.logger.warning("[${itemPath.currentPath ?: itemPath.name}] Missing texture key")
+		BPaperLib.instance.logger.warning("[${itemPath.currentPath ?: itemPath.name}] Missing texture key")
 		return def
 	}
 
@@ -41,7 +41,7 @@ fun ConfigurationSection.getItemStack2(path: String, def: ItemStack): ItemStack 
 			val texture = Material.valueOf(textureKey.uppercase())
 			ItemBuilder(texture)
 		} catch (_: IllegalArgumentException) {
-			BLib.instance.logger.warning("[${itemPath.currentPath ?: itemPath.name}] Unknown texture: $textureKey")
+			BPaperLib.instance.logger.warning("[${itemPath.currentPath ?: itemPath.name}] Unknown texture: $textureKey")
 			return def
 		}
 	}
@@ -56,7 +56,7 @@ fun ConfigurationSection.getItemStack2(path: String, def: ItemStack): ItemStack 
 		for (flagName in flagList) {
 			val flag = runCatching { ItemFlag.valueOf(flagName.uppercase()) }
 				.getOrElse {
-					BLib.instance.logger.warning("[${itemPath.currentPath ?: itemPath.name}] Unknown item flag: $flagName")
+					BPaperLib.instance.logger.warning("[${itemPath.currentPath ?: itemPath.name}] Unknown item flag: $flagName")
 					return def
 				}
 			flags.add(flag)
@@ -70,7 +70,7 @@ fun ConfigurationSection.getItemStack2(path: String, def: ItemStack): ItemStack 
 			val enchant = RegistryAccess.registryAccess().getRegistry(RegistryKey.ENCHANTMENT)
 				.get(NamespacedKey.minecraft(key.lowercase()))
 				?: run {
-					BLib.instance.logger.warning("[${itemPath.currentPath ?: itemPath.name}] Unknown enchantment: $key")
+					BPaperLib.instance.logger.warning("[${itemPath.currentPath ?: itemPath.name}] Unknown enchantment: $key")
 					return def
 				}
 			val level = enchantsSection.getInt(key, 1)

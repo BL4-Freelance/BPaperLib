@@ -1,4 +1,4 @@
-package fr.bl4.blib.item
+package fr.bl4.bpaperlib.item
 
 enum class ItemSpecificMeta {
 	TYPE,

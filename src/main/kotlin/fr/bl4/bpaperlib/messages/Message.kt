@@ -1,6 +1,6 @@
-package fr.bl4.blib.messages
+package fr.bl4.bpaperlib.messages
 
-import fr.bl4.blib.utils.colorize
+import fr.bl4.bpaperlib.utils.colorize
 import org.bukkit.command.CommandSender
 
 fun CommandSender.message(vararg messages: String) {

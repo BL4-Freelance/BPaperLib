@@ -1,1 +1,1 @@
-rootProject.name = 'BLib'
+rootProject.name = "BPaperLib"

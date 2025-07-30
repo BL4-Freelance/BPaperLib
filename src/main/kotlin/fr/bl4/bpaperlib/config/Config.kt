@@ -1,8 +1,8 @@
-package fr.bl4.blib.config
+package fr.bl4.bpaperlib.config
 
-import fr.bl4.blib.BLib
-import fr.bl4.blib.item.ItemBuilder
-import fr.bl4.blib.utils.colorize
+import fr.bl4.bpaperlib.BPaperLib
+import fr.bl4.bpaperlib.item.ItemBuilder
+import fr.bl4.bpaperlib.utils.colorize
 import net.kyori.adventure.text.Component
 import org.bukkit.Material
 import org.bukkit.configuration.ConfigurationSection
@@ -50,9 +50,9 @@ fun JavaPlugin.reload(vararg configs: PluginConfigFile) = configs.forEach {
 	try {
 		config
 		it.onReload()
-		BLib.instance.logger.info("Config reloaded successfully: ${it.file!!.path}")
+		BPaperLib.instance.logger.info("Config reloaded successfully: ${it.file!!.path}")
 	} catch (e: Exception) {
-		BLib.instance.logger.severe("Error reloading config: ${e.message}")
+		BPaperLib.instance.logger.severe("Error reloading config: ${e.message}")
 	}
 }
 

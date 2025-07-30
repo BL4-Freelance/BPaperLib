@@ -1,4 +1,4 @@
-package fr.bl4.blib.serializer
+package fr.bl4.bpaperlib.serializer
 
 import org.bukkit.Bukkit
 import org.bukkit.Location

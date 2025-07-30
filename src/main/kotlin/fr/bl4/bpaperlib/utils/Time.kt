@@ -1,4 +1,4 @@
-package fr.bl4.blib.utils
+package fr.bl4.bpaperlib.utils
 
 import java.time.Instant
 import java.time.ZoneId

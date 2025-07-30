@@ -1,4 +1,4 @@
-package fr.bl4.blib.utils
+package fr.bl4.bpaperlib.utils
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.TextDecoration

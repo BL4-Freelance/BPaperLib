@@ -1,6 +1,6 @@
-package fr.bl4.blib.item
+package fr.bl4.bpaperlib.item
 
-import fr.bl4.blib.utils.colorize
+import fr.bl4.bpaperlib.utils.colorize
 import org.bukkit.Material
 import org.bukkit.OfflinePlayer
 import org.bukkit.enchantments.Enchantment

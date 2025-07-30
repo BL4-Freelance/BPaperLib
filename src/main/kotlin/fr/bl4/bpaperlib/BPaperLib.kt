@@ -1,15 +1,15 @@
-package fr.bl4.blib
+package fr.bl4.bpaperlib
 
 import net.luckperms.api.LuckPerms
 import net.luckperms.api.LuckPermsProvider
 import org.bukkit.plugin.java.JavaPlugin
 
 
-class BLib : JavaPlugin() {
+class BPaperLib : JavaPlugin() {
 
 	companion object {
 		@JvmStatic
-		lateinit var instance: BLib
+		lateinit var instance: BPaperLib
 			private set
 	}
 

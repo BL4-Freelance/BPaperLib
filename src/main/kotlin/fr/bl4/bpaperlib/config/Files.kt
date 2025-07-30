@@ -1,4 +1,4 @@
-package fr.bl4.blib.config
+package fr.bl4.bpaperlib.config
 
 import java.io.File
 
