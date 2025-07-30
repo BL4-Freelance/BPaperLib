@@ -1,6 +1,7 @@
 plugins {
 	alias(libs.plugins.kotlin)
 	alias(libs.plugins.shadow)
+	id("maven-publish")
 }
 
 group = "fr.bl4"
@@ -49,4 +50,27 @@ tasks.processResources {
 
 tasks.shadowJar {
 	archiveFileName.set("${project.name}-${project.version}.jar")
+}
+
+publishing {
+	publications {
+		create<MavenPublication>("gpr") {
+			groupId = project.group.toString()
+			artifactId = project.name
+			version = project.version.toString()
+
+			from(components["java"])
+			artifact(tasks.shadowJar.get())
+		}
+	}
+	repositories {
+		maven {
+			name = "GitHubPackages"
+			url = uri("https://maven.pkg.github.com/BL4-Freelance/BPaperLib")
+			credentials {
+				username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_USERNAME")
+				password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
+			}
+		}
+	}
 }

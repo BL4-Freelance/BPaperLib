@@ -1,0 +1,43 @@
+name: Build & Publish Plugin
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 21
+
+      - name: Set up Gradle
+        uses: gradle/gradle-build-action@v3
+
+      - name: Build plugin with Gradle
+        run: ./gradlew build
+
+      - name: Publish to GitHub Packages
+        run: ./gradlew publish
+        env:
+          GITHUB_USERNAME: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload JAR to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/libs/BPaperLib-*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
