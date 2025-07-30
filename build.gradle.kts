@@ -1,3 +1,5 @@
+import org.gradle.internal.extensions.stdlib.toDefaultLowerCase
+
 plugins {
 	alias(libs.plugins.kotlin)
 	alias(libs.plugins.shadow)
@@ -6,6 +8,7 @@ plugins {
 
 group = "fr.bl4"
 version = "1.1.0"
+description = "A library for PaperMC Minecraft plugins."
 
 repositories {
 	mavenCentral()
@@ -33,7 +36,7 @@ tasks.build {
 }
 
 tasks.processResources {
-	val props = mapOf("version" to version)
+	val props = mapOf("version" to version, "description" to description)
 	inputs.properties(props)
 	filteringCharset = "UTF-8"
 	duplicatesStrategy = DuplicatesStrategy.INCLUDE
@@ -56,10 +59,34 @@ publishing {
 	publications {
 		create<MavenPublication>("gpr") {
 			groupId = project.group.toString()
-			artifactId = project.name
+			artifactId = project.name.toDefaultLowerCase()
 			version = project.version.toString()
 
 			artifact(tasks.shadowJar.get())
+
+			pom {
+				name.set(project.name)
+				description.set("A library for PaperMC Minecraft plugins.")
+				url.set("https://github.com/BL4-Freelance/BPaperLib")
+				licenses {
+					license {
+						name.set("MIT License")
+						url.set("https://opensource.org/licenses/MIT")
+					}
+				}
+				developers {
+					developer {
+						id.set("bl4")
+						name.set("Clems")
+						email.set("bl4nshark@gmail.com")
+					}
+				}
+				scm {
+					connection.set("scm:git:git://github.com/BL4-Freelance/BPaperLib.git")
+					developerConnection.set("scm:git:ssh://github.com:BL4-Freelance/BPaperLib.git")
+					url.set("https://github.com/BL4-Freelance/BPaperLib")
+				}
+			}
 		}
 	}
 	repositories {

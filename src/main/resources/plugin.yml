@@ -1,5 +1,6 @@
 name: BPaperLib
 version: ${version}
+description: ${description}
 main: fr.bl4.bpaperlib.BPaperLib
 api-version: '1.21'
 depend: [NBTAPI, LuckPerms]
