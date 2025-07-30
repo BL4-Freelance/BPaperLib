@@ -22,12 +22,6 @@ Thumbs.db
 # Kotlin
 /.kotlin/
 
-# Server-specific files (optional if you have a server folder)
-server/logs/
-server/crash-reports/
-server/world/
-server/plugins/*.jar  # if you auto-build plugins here
-
 # Misc
 *.tmp
 *.bak
