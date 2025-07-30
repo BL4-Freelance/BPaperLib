@@ -62,7 +62,9 @@ publishing {
 			artifactId = project.name.toDefaultLowerCase()
 			version = project.version.toString()
 
-			artifact(tasks.shadowJar.get())
+			artifact(tasks.shadowJar.get()) {
+				classifier = null
+			}
 
 			pom {
 				name.set(project.name)
