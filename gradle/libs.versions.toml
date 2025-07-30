@@ -1,0 +1,19 @@
+[versions]
+kotlin = "2.2.0"
+shadow = "8.3.8"
+paperApi = "1.21.4-R0.1-SNAPSHOT"
+itemNbtApi = "2.15.1"
+itemsAdder = "4.0.10"
+luckPerms = "5.5"
+java = "21"
+
+[libraries]
+kotlinStdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+paperApi = { module = "io.papermc.paper:paper-api", version.ref = "paperApi" }
+itemNbtApi = { module = "de.tr7zw:item-nbt-api-plugin", version.ref = "itemNbtApi" }
+itemsAdder = { module = "dev.lone:api-itemsadder", version.ref = "itemsAdder" }
+luckpermsApi = { module = "net.luckperms:api", version.ref = "luckPerms" }
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
