@@ -8,7 +8,6 @@
 
 # Gradle
 /.gradle/
-/gradle/
 
 # OS generated files
 .DS_Store
@@ -19,6 +18,9 @@ Thumbs.db
 
 # Java
 *.class
+
+# Kotlin
+/.kotlin/
 
 # Server-specific files (optional if you have a server folder)
 server/logs/
