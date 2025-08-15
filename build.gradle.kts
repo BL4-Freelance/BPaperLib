@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "fr.bl4"
-version = "1.1.2"
+version = "1.2.0"
 description = "A library for PaperMC Minecraft plugins."
 
 repositories {
@@ -15,12 +15,15 @@ repositories {
 	maven("https://repo.papermc.io/repository/maven-public/") { name = "papermc-repo" }
 	maven("https://oss.sonatype.org/content/groups/public/") { name = "sonatype" }
 	maven("https://repo.codemc.io/repository/maven-public/") { name = "CodeMC" }
+	maven("https://repo.tcoded.com/releases") { name = "tcoded-repo" }
 	maven("https://maven.devs.beer/")
 }
 
 dependencies {
 	compileOnly(libs.paperApi)
 	implementation(libs.kotlinStdlib)
+
+	implementation(libs.inventoryFramework)
 
 	compileOnly(libs.itemNbtApi)
 	compileOnly(libs.itemsAdder)
@@ -53,6 +56,9 @@ tasks.processResources {
 
 tasks.shadowJar {
 	archiveFileName.set("${project.name}-${project.version}.jar")
+
+	relocate("me.devnatan.inventoryframework", "fr.bl4.bpaperlib.external.inventoryframework")
+	relocate("com.tcoded.folialib", "fr.bl4.bpaperlib.external.folialib")
 }
 
 publishing {

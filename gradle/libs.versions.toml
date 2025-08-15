@@ -4,6 +4,7 @@ shadow = "9.0.2"
 paperApi = "1.21.4-R0.1-SNAPSHOT"
 itemNbtApi = "2.15.1"
 itemsAdder = "4.0.10"
+inventoryFramework = "3.5.1"
 luckPerms = "5.5"
 java = "21"
 
@@ -12,6 +13,7 @@ kotlinStdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref
 paperApi = { module = "io.papermc.paper:paper-api", version.ref = "paperApi" }
 itemNbtApi = { module = "de.tr7zw:item-nbt-api-plugin", version.ref = "itemNbtApi" }
 itemsAdder = { module = "dev.lone:api-itemsadder", version.ref = "itemsAdder" }
+inventoryFramework = { module = "me.devnatan:inventory-framework-platform-bukkit", version.ref = "inventoryFramework" }
 luckpermsApi = { module = "net.luckperms:api", version.ref = "luckPerms" }
 
 [plugins]
