@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "fr.bl4"
-version = "1.1.1"
+version = "1.1.2"
 description = "A library for PaperMC Minecraft plugins."
 
 repositories {
